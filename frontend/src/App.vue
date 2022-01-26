@@ -1,24 +1,25 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <div>
-      <p>
-        If Element is successfully added to this project, you'll see an
-        <code v-text="'<el-button>'"></code>
-        below
-      </p>
-      <el-button>el-button</el-button>
-    </div>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+ <div id="app">
+     <!-- 추가된 헤더 컴포넌트 사용 -->
+     <Header />
+
+     <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+     <!-- 추가된 풋터 컴포넌트 사용 -->
+     <Footer />
+   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 
+import Header from '@/components/common/Header.vue';
+import Footer from '@/components/common/Footer.vue';
 export default {
   name: 'app',
   components: {
+  Header,
+      Footer,
     HelloWorld
   }
 }
