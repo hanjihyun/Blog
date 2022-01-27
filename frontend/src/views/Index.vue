@@ -213,7 +213,7 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Index',
   props: {
     msg: String
   }

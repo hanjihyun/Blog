@@ -1,0 +1,67 @@
+<template>
+  <section>
+  <body class="text-center">
+
+<main class="form-signin">
+  <form>
+    <h1 class="h3 mb-3 fw-normal">Please sign Up</h1>
+
+    <div class="form-floating">
+      <input type="name" class="form-control" id="floatingName" placeholder="Name">
+      <label for="floatingName">Name</label>
+    </div>
+
+    <div class="form-floating">
+      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <label for="floatingPassword">Password</label>
+    </div>
+    <div class="blank mb-3"></div>
+
+    <button v-on:click="signUp" class="w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
+    <span><router-link :to="{name: 'Login'}">로그인</router-link>으로 돌아가기</span>
+  </form>
+</main>
+
+
+
+  </body>
+  </section>
+</template>
+<script>
+    export default{
+    name:'signUp',
+    data(){
+        return {
+            email:'',
+            password:'',
+        }
+    }
+    }
+</scrip>
+<style scoped>
+section {
+    display: flex;
+    flex-direction:
+    column; a
+    lign-items:
+    center;
+    justify-content:
+    center;
+    }
+.bd-placeholder-img {
+     font-size: 1.125rem;
+     text-anchor: middle;
+     -webkit-user-select: none;
+     -moz-user-select: none;
+     user-select: none;
+     }
+@media (min-width: 768px) {
+     .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+     }
+     }
+</style>
