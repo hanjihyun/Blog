@@ -16,7 +16,10 @@ export default {
   components: {
     Header,
       Footer
-  }
+  },
+  mounted(){
+    console.log(this.$firebase)
+  },
 }
 </script>
 
