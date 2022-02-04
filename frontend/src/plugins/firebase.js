@@ -1,9 +1,13 @@
-import Vue from 'vue'
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/firebase-database' // database
-import firebaseConfig from '@/plugins/firebaseConfig'
+//import Environment from './environment';
+import * as firebase from 'firebase';
 
-firebase.initializeApp(firebaseConfig)
+// firebase.initializeApp({
+// 	apiKey: Environment['FIREBASE_API_KEY'],
+// 	authDomain: Environment['FIREBASE_AUTH_DOMAIN'],
+//     appId: Environment['FIREBASE_APP_ID'],
+// 	projectId: Environment['FIREBASE_PROJECT_ID'],
+// 	storageBucket: Environment['FIREBASE_STORAGE_BUCKET'],
+// 	messagingSenderId: Environment['FIREBASE_MESSAGING_SENDER_ID']
+// });
 
-Vue.prototype.$firebase = firebase
+export default firebase;
