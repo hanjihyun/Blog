@@ -1,13 +1,16 @@
-//import Environment from './environment';
-import * as firebase from 'firebase';
+import 'firebase/auth';
+import firebase from 'firebase/app';
 
-// firebase.initializeApp({
-// 	apiKey: Environment['FIREBASE_API_KEY'],
-// 	authDomain: Environment['FIREBASE_AUTH_DOMAIN'],
-//     appId: Environment['FIREBASE_APP_ID'],
-// 	projectId: Environment['FIREBASE_PROJECT_ID'],
-// 	storageBucket: Environment['FIREBASE_STORAGE_BUCKET'],
-// 	messagingSenderId: Environment['FIREBASE_MESSAGING_SENDER_ID']
-// });
+var firebaseConfig = {
+  apiKey: "AIzaSyDqouMrWbJwJrpPLQS5JXIHbCeXRGeofPU",
+  authDomain: "blog-339506.firebaseapp.com",
+  projectId: "blog-339506",
+  storageBucket: "blog-339506.appspot.com",
+  messagingSenderId: "18503095621",
+  appId: "1:18503095621:web:95b5922ccf13efa88fda2c",
+  measurementId: "G-BL9HKQ7W4Y"
+}
 
-export default firebase;
+firebase.initializeApp(firebaseConfig);
+
+export const auth = firebase.auth();

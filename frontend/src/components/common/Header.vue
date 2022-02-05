@@ -19,6 +19,7 @@
         <button type="button" class="btn btn-dark">
         <router-link :to="{name: 'Login'}">Login</router-link>
         </button>
+
         <button type="button" class="btn btn-secondary">
         <router-link :to="{name: 'SignUp'}">Sign-up</router-link>
         </button>
@@ -27,3 +28,14 @@
   </div>
   </div>
 </template>
+<script>
+export default {
+    data() {
+         return {
+
+         };
+    },
+    methods: {
+
+    }
+}

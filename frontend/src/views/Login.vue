@@ -22,17 +22,53 @@
     </div>
     <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
 
-    <span><router-link :to="{name: 'SignUp'}">회원가입</router-link></span>
-    <div class="g-signin2" data-width="300" data-height="200" data-longtitle="true">GoogleLogin</div>
-  </form>
-</main>
-
-
-
+        <span><router-link :to="{name: 'SignUp'}">회원가입</router-link></span>
+       <div id="my-signin2"></div><p/>
+       <button @click="signout" align="left">signout</button>
+    </form>
+    </main>
   </body>
   </section>
 </template>
 
+<script>
+export default {
+    data() {
+         return {
+              googleUser: null,
+         };
+    },
+   mounted() {
+      window.gapi.signin2.render('my-signin2', {
+            scope: 'profile email',
+            width: 240,
+            height: 50,
+            longtitle: true,
+            theme: 'dark',
+            onsuccess: this.onSuccess,
+            onfailure: this.onFailure,
+          });
+    },
+    methods: {
+      onSuccess(googleUser) {
+
+          console.log(googleUser);
+          this.googleUser = googleUser.getBasicProfile();
+      },
+      onFailure(error) {
+
+          console.log(error);
+      },
+      signout() {
+         const authInst = window.gapi.auth2.getAuthInstance();
+         authInst.signOut().then(() => {
+
+            console.log('User Signed Out!!!');
+         });
+      },
+      }
+}
+</script>
 <style scoped>
     section { display: flex; flex-direction: column; align-items: center; justify-content: center;  }
       .bd-placeholder-img {
