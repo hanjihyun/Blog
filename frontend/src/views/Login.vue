@@ -51,7 +51,6 @@ export default {
     },
     methods: {
       onSuccess(googleUser) {
-
           console.log(googleUser);
           this.googleUser = googleUser.getBasicProfile();
       },
