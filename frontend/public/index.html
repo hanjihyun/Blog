@@ -9,13 +9,13 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <meta name="google-signin-client_id" content="18503095621-5nr55k6ulpaigcjc129aundrhf4tldd6.apps.googleusercontent.com" />
+    <meta name="google-signin-client_id" content="[===================GOOGLE API ID==================]" />
     <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 <!--    Google SignIn button을 render하기 위한 gapi.signin2이 아직 생성되지 않은 상태, 라이브러리 로드 완료 후 vue.js에서 버튼 render -->
     <script>
       function init() {
         gapi.load('auth2', () => {
-          gapi.auth2.init({ client_id: '18503095621-5nr55k6ulpaigcjc129aundrhf4tldd6.apps.googleusercontent.com' }).then(() => {
+          gapi.auth2.init({ client_id: '[===================GOOGLE API ID==================]' }).then(() => {
             console.log('init end!!');
             const event = new Event('google-oauth-library-load');
             window.dispatchEvent(event);
