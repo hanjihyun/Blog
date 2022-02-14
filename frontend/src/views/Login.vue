@@ -23,7 +23,7 @@
     <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
 
         <span><router-link :to="{name: 'SignUp'}">회원가입</router-link></span>
-       <div id="my-signin2"></div><p/>
+       <div id="my-signin2"></div>
        <button @click="signout" align="left">signout</button>
     </form>
     </main>
@@ -42,7 +42,7 @@ export default {
       window.gapi.signin2.render('my-signin2', {
             scope: 'profile email',
             width: 240,
-            height: 50,
+            height : 50,
             longtitle: true,
             theme: 'dark',
             onsuccess: this.onSuccess,
@@ -53,6 +53,12 @@ export default {
       onSuccess(googleUser) {
           console.log(googleUser);
           this.googleUser = googleUser.getBasicProfile();
+          console.log(googleUser.getBasicProfile().getId());
+          console.log(googleUser.getBasicProfile().getName());
+          console.log(googleUser.getBasicProfile().getGivenName());
+          console.log(googleUser.getBasicProfile().getFamilyName());
+          console.log(googleUser.getBasicProfile().getImageUrl());
+          console.log(googleUser.getBasicProfile().getEmail());
       },
       onFailure(error) {
 
