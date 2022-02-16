@@ -23,7 +23,7 @@
     <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
 
         <span><router-link :to="{name: 'SignUp'}">회원가입</router-link></span>
-       <div id="my-signin2"></div>
+       <div id="my-signin2" ></div>
        <button @click="signout" align="left">signout</button>
     </form>
     </main>
@@ -32,27 +32,45 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
     data() {
          return {
               googleUser: null,
          };
     },
-   mounted() {
-      window.gapi.signin2.render('my-signin2', {
-            scope: 'profile email',
-            width: 240,
-            height : 50,
-            longtitle: true,
-            theme: 'dark',
-            onsuccess: this.onSuccess,
-            onfailure: this.onFailure,
-          });
-    },
-    methods: {
+    mounted() {
+       window.addEventListener('google-oauth-library-load', this.renderSignInButton);
+     },
+     methods: {
+       renderSignInButton() {
+         window.gapi.signin2.render('my-signin2', {
+           scope: 'profile email',
+           width: 240,
+           height: 50,
+           longtitle: true,
+           theme: 'dark',
+           onsuccess: this.onSuccess,
+           onfailure: this.onFailure,
+         });
+       },
       onSuccess(googleUser) {
           console.log(googleUser);
           this.googleUser = googleUser.getBasicProfile();
+          const url = '/tokenVerify';
+          const params = new URLSearchParams();
+          params.append('idToken', this.idToken);
+                axios.post(url, params).then((res) => {
+                  // eslint-disable-next-line
+                  console.log(res);
+                }).catch((error) => {
+                  // eslint-disable-next-line
+                  console.log(error);
+                }).then(() => {
+                  // eslint-disable-next-line
+                  console.log('tokenVerify End!!');
+                  this.movePage();
+                });
           console.log(googleUser.getBasicProfile().getId());
           console.log(googleUser.getBasicProfile().getName());
           console.log(googleUser.getBasicProfile().getGivenName());
@@ -60,8 +78,10 @@ export default {
           console.log(googleUser.getBasicProfile().getImageUrl());
           console.log(googleUser.getBasicProfile().getEmail());
       },
+      movePage() {
+            this.$router.push('/');
+          },
       onFailure(error) {
-
           console.log(error);
       },
       signout() {
