@@ -1,7 +1,7 @@
 package com.springboot.blog.config.auth.dto;
 
 
-import com.springboot.blog.model.user.Role;
+import com.springboot.blog.model.user.UserRole;
 import com.springboot.blog.model.user.User;
 import lombok.Builder;
 import lombok.Getter;
@@ -67,7 +67,7 @@ public class OAuthAttributes {
                 .password(password)
                 .name(name)
                 .picture(picture)
-                .role(Role.USER)
+                .role(UserRole.USER)
                 .build();
     }
 }

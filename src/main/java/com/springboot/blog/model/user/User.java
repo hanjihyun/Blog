@@ -3,6 +3,7 @@ package com.springboot.blog.model.user;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -15,27 +16,23 @@ public class User {
     @Column(name = "user_id_pk")
     private Long id;
 
-    @Column(nullable = false)
     private String email;
-
-    @Column
     private String password;
-
-    @Column(nullable = false)
     private String name;
-
-    @Column
+    private LocalDate createDate;
+    private String token;
     private String picture;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Role role;
+    private UserRole role;
 
     @Builder
-    public User(String email, String password, String name, String picture,Role role) {
+    public User(String email, String password, String name, LocalDate createDate, String token, String picture, UserRole role) {
         this.email = email;
         this.password = password;
         this.name = name;
+        this.createDate = createDate;
+        this.token = token;
         this.picture = picture;
         this.role = role;
 
