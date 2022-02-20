@@ -59,18 +59,25 @@ export default {
           this.googleUser = googleUser.getBasicProfile();
           const url = '/tokenVerify';
           const params = new URLSearchParams();
-          params.append('idToken', this.idToken);
-                axios.post(url, params).then((res) => {
-                  // eslint-disable-next-line
-                  console.log(res);
-                }).catch((error) => {
-                  // eslint-disable-next-line
-                  console.log(error);
-                }).then(() => {
-                  // eslint-disable-next-line
-                  console.log('tokenVerify End!!');
-                  this.movePage();
-                });
+          var authResponse = googleUser.getAuthResponse()
+                      console.log(authResponse);
+                      var id_token = authResponse.id_token;
+                      console.log('JWT token (encrypted): ' + id_token);
+                      console.log('JWT token (decrypted):');
+          params.append('idToken', id_token);
+
+            axios.post(url, params).then((res) => {
+              // eslint-disable-next-line
+              console.log(res);
+            }).catch((error) => {
+              // eslint-disable-next-line
+              console.log(error);
+            }).then(() => {
+              // eslint-disable-next-line
+              console.log('tokenVerify End!!');
+              this.movePage();
+            });
+
           console.log(googleUser.getBasicProfile().getId());
           console.log(googleUser.getBasicProfile().getName());
           console.log(googleUser.getBasicProfile().getGivenName());
