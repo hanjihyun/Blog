@@ -33,7 +33,7 @@ public class UserController {
 
     private final PasswordEncoder passwordEncoder;
 
-    @RequestMapping(value = "tokenVerify", method = RequestMethod.POST)
+    @PostMapping("/tokenVerify")
     public ResponseEntity<?> tokenVerify(String idToken){
         System.out.println("RequestBody value : " + idToken);
 
