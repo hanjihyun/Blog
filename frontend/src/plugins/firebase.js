@@ -1,15 +1,15 @@
 import 'firebase/auth';
 import firebase from 'firebase/app';
 
-var firebaseConfig = {
-  apiKey: "AIzaSyDqouMrWbJwJrpPLQS5JXIHbCeXRGeofPU",
-  authDomain: "blog-339506.firebaseapp.com",
-  projectId: "blog-339506",
-  storageBucket: "blog-339506.appspot.com",
-  messagingSenderId: "18503095621",
-  appId: "1:18503095621:web:95b5922ccf13efa88fda2c",
-  measurementId: "G-BL9HKQ7W4Y"
-}
+const firebaseConfig = {
+  apiKey: "AIzaSyCbqWrC1PCPzgqOClz4jnsCgBD19kZJT-Y",
+  authDomain: "my-blog-341302.firebaseapp.com",
+  projectId: "my-blog-341302",
+  storageBucket: "my-blog-341302.appspot.com",
+  messagingSenderId: "155279474103",
+  appId: "1:155279474103:web:01952c2fcc0158bd5dbc32",
+  measurementId: "G-M1L2J15Q52"
+};
 
 firebase.initializeApp(firebaseConfig);
 
