@@ -6,20 +6,26 @@
   <form>
     <h1 class="h3 mb-3 fw-normal">Please sign Up</h1>
 
-    <div class="form-floating">
-      <input type="name" class="form-control" v-model="name" placeholder="Name">
-      <label for="name">Name</label>
-    </div>
+        <div class="form-floating">
+          <input class="form-control" v-model="name" placeholder="Name">
+          <label for="name">Name</label>
+        </div>
+        <p></p>
+        <div class="form-floating">
+          <input type="email" class="form-control" v-model="email" placeholder="email@example.com">
+          <label for="email">Email address</label>
+        </div>
 
-    <div class="form-floating">
-      <input type="email" class="form-control" v-model="email" placeholder="name@example.com">
-      <label for="email">Email address</label>
-    </div>
-    <div class="form-floating">
-      <input type="password" class="form-control" id="password" placeholder="Password">
-      <label for="password">Password</label>
-    </div>
-    <div class="blank mb-3"></div>
+        <p></p>
+        <div class="form-floating">
+          <input type="password" class="form-control" id="password" placeholder="Password">
+          <label for="password">Password</label>
+        </div>
+        <div class="form-floating">
+              <input type="password" class="form-control" id="passwordCheck" placeholder="Password">
+              <label for="passwordCheck">Password Check</label>
+            </div>
+        <div class="blank mb-3"></div>
 
     <button @click="checkSignUp" class="w-100 btn btn-lg btn-primary">Sign Up</button>
     <span><router-link :to="{name: 'Login'}">로그인</router-link>으로 돌아가기</span>
@@ -32,7 +38,7 @@
   </section>
 </template>
 <script>
-import axios from "axios";
+import axios from "../http-common";
     export default{
         name:'signUp',
         components: {
@@ -43,6 +49,8 @@ import axios from "axios";
                 email:'',
                 password:'',
             }
+        },
+        computed: {
         },
         methods:{
             checkSignUp(){
@@ -87,6 +95,15 @@ import axios from "axios";
 
 </script>
 <style scoped>
+.form-control2{
+    display: flex;
+    flex-direction:
+    column;
+    align-items:
+    center;
+    justify-content:
+    center;
+}
     section {
         display: flex;
         flex-direction:

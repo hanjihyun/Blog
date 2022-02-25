@@ -12,19 +12,22 @@ export default new Router({
             path: "/",
             name: "Index",
             component: Index,
-
+        },
+        {
+            path: '*',
+            name: '404',
+            component: () => import('@/views/error/404.vue'),
         },
         {
             path: "/login",
             name: "Login",
             component: Login,
-
         },
         {
              path: "/signUp",
              name: "SignUp",
              component: SignUp,
-
         },
+
     ]
 });

@@ -20,9 +20,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
-@Controller
+@CrossOrigin(origins = "http://localhost:8081")
 @RequiredArgsConstructor
-@ResponseBody
+@RestController
+@RequestMapping("/user")
 public class UserController {
 //
 //    @Autowired
@@ -34,14 +35,42 @@ public class UserController {
     private final PasswordEncoder passwordEncoder;
 
     @PostMapping("/tokenVerify")
-    public ResponseEntity<?> tokenVerify(String idToken){
-        System.out.println("RequestBody value : " + idToken);
+    public Object tokenVerify(@RequestBody User request){
+        System.out.println(request.getEmail());
 
         return null;
     }
+    @PostMapping("/signUp")
+    public Object sighUp(@RequestBody User request){
+        ResponseBasic result = null;
+        try {
 
+            result = new ResponseBasic( true, "success", null);
+        }
+        catch (Exception e){
+            result = new ResponseBasic(false, "fail", null);
+        }
+        return new ResponseEntity<>(result, HttpStatus.OK);
+
+    }
+    @GetMapping("/login2")
+    public Object login2(@RequestBody User userReq) {
+        System.out.println("들어옴???????");
+        System.out.println(userReq.getEmail());
+        System.out.println(userReq.getPassword());
+
+        ResponseBasic result = null;
+        try {
+
+            result = new ResponseBasic( true, "success", null);
+        }
+        catch (Exception e){
+            result = new ResponseBasic(false, "fail", null);
+        }
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
     @PostMapping("/login")
-    public Object login(@RequestBody RequestLoginUser userReq, HttpServletResponse response) {
+    public Object login(@RequestBody User userReq, HttpServletResponse response) {
         ResponseBasic result = new ResponseBasic();
 
         Optional<User> userOpt = userRepository.findByEmail(userReq.getEmail());
