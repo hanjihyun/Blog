@@ -57,7 +57,7 @@ export default {
       onSuccess(googleUser) {
           console.log(googleUser);
           this.googleUser = googleUser.getBasicProfile();
-          const url = '/tokenVerify';
+          const url = '/user/tokenVerify';
           const params = new URLSearchParams();
           var authResponse = googleUser.getAuthResponse()
                       console.log(authResponse);
