@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "../http-common";
 export default {
     data() {
          return {
@@ -57,24 +57,24 @@ export default {
       onSuccess(googleUser) {
           console.log(googleUser);
           this.googleUser = googleUser.getBasicProfile();
-          const url = '/user/tokenVerify';
+
+
           const params = new URLSearchParams();
-          var authResponse = googleUser.getAuthResponse()
-                      console.log(authResponse);
-                      var id_token = authResponse.id_token;
-                      console.log('JWT token (encrypted): ' + id_token);
-                      console.log('JWT token (decrypted):');
+          var authResponse = googleUser.getAuthResponse();
+          console.log(authResponse);
+          var id_token = authResponse.id_token;
+
+          console.log('JWT token (encrypted): ' + id_token);
+          console.log('JWT token (decrypted):' + this.idToken);
+
           params.append('idToken', id_token);
 
-            axios.post(url, params).then((res) => {
-              // eslint-disable-next-line
-              console.log(res);
-            }).catch((error) => {
-              // eslint-disable-next-line
-              console.log(error);
-            }).then(() => {
-              // eslint-disable-next-line
-              console.log('tokenVerify End!!');
+            axios.post('/user/tokenVerify', params).then(({ data }) => {
+             let msg = '문제가 발생했습니다.';
+              if (data === 'success') {
+                msg = '완료되었습니다.';
+              }
+              alert(msg);
               this.movePage();
             });
 

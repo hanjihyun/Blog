@@ -8,6 +8,7 @@ import com.springboot.blog.repository.UserRepository;
 import com.springboot.blog.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,7 +21,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:8081")
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/user")
@@ -33,12 +33,25 @@ public class UserController {
     private final UserRepository userRepository;
 
     private final PasswordEncoder passwordEncoder;
+    private static String clientId;
+
+    @Value("${oauth.google.clientId:'100'}")
+    private void setClientId(String temp) {
+        clientId = temp;
+    }
 
     @PostMapping("/tokenVerify")
-    public Object tokenVerify(@RequestBody User request){
-        System.out.println(request.getEmail());
+    public Object tokenVerify(String idToken){
+        ResponseBasic result = null;
+        System.out.println(idToken);
+        try {
 
-        return null;
+            result = new ResponseBasic( true, "success", null);
+        }
+        catch (Exception e){
+            result = new ResponseBasic(false, "fail", null);
+        }
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
     @PostMapping("/signUp")
     public Object sighUp(@RequestBody User request){

@@ -15,7 +15,7 @@
     <script>
       function init() {
         gapi.load('auth2', () => {
-          gapi.auth2.init({ client_id: '155279474103-d27diddjffp49un5vdamv6unhvp2djvm' }).then(() => {
+          gapi.auth2.init({ client_id: '155279474103-d27diddjffp49un5vdamv6unhvp2djvm.apps.googleusercontent.com' }).then(() => {
             console.log('init end!!');
             const event = new Event('google-oauth-library-load');
             window.dispatchEvent(event);
